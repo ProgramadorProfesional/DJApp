@@ -20,7 +20,19 @@ function setup()
 }
 function draw()
 {
-    image(webcam,0,0,500,500)
+    image(webcam,0,0,500,500);
+    fill("orange");
+    stroke("orange");
+    if(score_left > 0.1000000000000000000000000000000000000000000000000000000)
+    {
+        circle(left_wrist_x, left_wrist_y, 21);
+        valor_y = Number(left_wrist_y);
+        valor_y_rounded = floor(valor_y*2);
+        volume = valor_y_rounded/1000;
+        document.getElementById("volume").innerHTML = "Volume = " + volume;
+	    song.setVolume(volume);		
+    }
+
 }
 function modelLoaded()
 {

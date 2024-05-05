@@ -23,6 +23,7 @@ function draw()
     image(webcam,0,0,500,500);
     fill("orange");
     stroke("orange");
+    // Configuracion del volumen
     if(score_left > 0.1000000000000000000000000000000000000000000000000000000)
     {
         circle(left_wrist_x, left_wrist_y, 21);
@@ -30,9 +31,38 @@ function draw()
         valor_y_rounded = floor(valor_y*2);
         volume = valor_y_rounded/1000;
         document.getElementById("volume").innerHTML = "Volume = " + volume;
-	    song.setVolume(volume);		
+	    song.setVolume(volume);
     }
-
+    //Configuracion de velocidad
+    if(score_right > 0.1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000)
+    {
+        circle(right_wrist_x, right_wrist_y, 25);
+        if(right_wrist_y > 0 && right_wrist_y <= 100 )
+        {
+            document.getElementById("Velocidad").innerHTML = "SPEED= 4x";
+            song.rate(4);
+        }
+        else if(right_wrist_y > 100 && right_wrist_y <= 200 )
+        {
+            document.getElementById("Velocidad").innerHTML = "SPEED= 3x";
+            song.rate(3);
+        }
+        else if(right_wrist_y > 200 && right_wrist_y <= 300 )
+        {
+            document.getElementById("Velocidad").innerHTML = "SPEED= 2x";
+            song.rate(2);
+        }
+        else if(right_wrist_y > 300 && right_wrist_y <= 400 )
+        {
+            document.getElementById("Velocidad").innerHTML = "SPEED= 1x";
+            song.rate(1.5);
+        }
+        else if(right_wrist_y > 400)
+        {
+            document.getElementById("Velocidad").innerHTML = "SPEED= 0.5x";
+            song.rate(0.5);
+        }
+    }
 }
 function modelLoaded()
 {
